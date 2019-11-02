@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Effect</title>
+<style>
+.box{
+    width:20px;height:20px;background-color:red;
+}
+</style>
+</head>
+<body>
+    <h3>Amimation Effect</h3>
+    <div id="box" class="box"></div>
+    <button onclick="start();">Start</button>
+    <script>
+       let box=document.querySelector("#box");
+       let animeId;
+       let x=20;
+       function start(){
+           animeId=window.setInterval(change, 10);
+       }
+       function change(){
+           x++;
+           let red=x%255
+           box.style.width=x+"px";
+           box.style.height=x+"px";
+           box.style.backgroundColor="rgb("+red+",0,0)";
+           if(x>=600){
+               window.clearInterval(animeId);
+           }
+       }
+    </script>
+</body>    
+</html>
