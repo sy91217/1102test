@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta chrast="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JavaScript</title>
+</head>
+<body>
+    <div id="content">Hello HTML DOM</div>
+    <button onclick="go();">Click</button>
+    <script>
+        function go(){
+            //操作HTML DOM(網頁畫面)
+            //1.取得有趣得標籤
+            let elem=document.querySelector("#content");
+            //2.修改標籤屬性或CSS達成目的
+            elem.innerHTML="Hello Event Handling";
+            elem.style.backgroundColor="pink";
+            //3.在標籤上做事件處理(Event Handling)
+            //標籤.addEventListener(事件名稱,處理函式);
+            //事件名稱：click(點一下), dbclick(快速點兩下), mouseover, museout, mousedown(滑鼠按住), mouseup(滑鼠放開), mousemove(滑鼠移動)
+            //事件物件；處理函式的第一個參數(e)
+            elem.addEventListener("dblclick",function(){
+                elem.style.display="none";
+            });
+            elem.addEventListener("mousedown",function(e){
+                console.log(e.clientX, e.clientY);//跑出滑鼠點擊時的座標位置
+                elem.style.fontSize=(e.clientX/10)+"px";//當座標越往右，會變越大
+                elem.style.color="red";
+            });
+            elem.addEventListener("mouseup",function(){
+                elem.style.color="black";
+            });
+            elem.addEventListener("mousemove",function(e){//滑鼠在這個標籤的範圍中移動時會被連續觸發
+                //console.log(e.clientX, e.clientY);
+                let r=255*(e.clientX/window.innerWidth);
+                elem.style.backgroundColor="rgb("+r+",128,128)";//rgb(紅色,綠色,藍色)   
+            });     
+        }
+    
+    /*
+    函式是一種資料
+    function add(n1,n2){
+        return n1+n2;
+    }
+    let newName=add;
+    let result=newName(3,4);
+    console.log(result);
+    
+    有點像是:
+         let x=3;
+        let y=x;
+        console.log(y);
+    */
+    /*
+    console.log(add)//直接印出函式本身(就像印出一個資料)
+    console.log(add(3,4));//呼叫函式，得到回傳值
+    let result=add(3,4);
+    console.log(result);
+    */
+    //資料、變數、運算符號、流程控制
+    //函式：建立/使用函式、參數、回傳值
+    /*
+    function add(n1,n2,callback){
+        callback(n1+n2);
+    }
+    function handle(result){
+        console.log(result);
+    }
+    add(3,4,handle);
+    add(5,6,function(result){//匿名函式
+        document.body.innerHTML=result;
+    });
+    */
+    </script>
+</body>
+</html>

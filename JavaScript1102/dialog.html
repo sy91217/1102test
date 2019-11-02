@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta chrast="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dialog</title>
+        <style>
+        .dialog{/*設計一個獨立的框框 是要可以蓋住版面的*/
+            width:300px;
+            padding:20px;
+            background-color:#cccccc;
+            border:1px solid#aaaaaa;
+            box-shadow:0px 0px 5px #888888;
+            /*調整定位模式(定的位置是在框框的左上角)*/
+            position:fixed;left:calc(50% - 150px);/*所以用calc的式子做調整  150px是從width:300px除2算出來的*/
+            top:50px;
+            z-index:10;/*有點像word的排續物件在上中下的順序*/
+            display:none;/*一開始是先關掉的 再用程式打開來*/
+        }
+        .dialog-mask{
+            position:fixed;top:0px;left:0px;width:100%;height:100%;
+            background-color:black;opacity:0.5;/*opacity是透明度*/
+            z-index:5;display:none;
+        }
+        </style>
+</head>
+<body>
+    <h3>Draggable Dialog</h3>
+    <button onclick="openDialog();">Open</button>
+    <div style="height:1000px;background-color:#ffcccc;">Layout</div>
+    <div id="dialog" class="dialog"></div>
+    <div id="dialog-mask" class="dialog-mask"></div>
+    <script>
+        let dialog=document.querySelector("#dialog");//先取得標籤，存放在變數中
+        function openDialog(){
+            dialog.style.display="block";
+            dialogMask.style.display="black";
+        }
+    </script>
+</body>
+</html>
