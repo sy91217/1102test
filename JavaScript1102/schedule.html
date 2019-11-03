@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Schedule</title>
-</head>
-<body>
-    <h3>countdown</h3>
-    <div id="timer">3</div>
-    <script>
-        //window.setTimeout
+    <meta chrast="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>排程 Schedule</title>
+    </head>
+    <body>
+        <h3>倒數計時器</h3>
+        <div id="timer">3</div>
+        <script>
+            /*
+                建立排程：
+                時間到執行一次：window.setTimeout(函式，數字代表毫秒)
+                每隔一時間持續執行：window.setInterval(函式，數字代表毫秒)
+            */
         let timer=document.querySelector("#timer");
-        let timerId;
+        let timeId;
         function countdown(){
-            timer.innerHTML=timer.innerHTML-1;
-            if(timer.innerHTML<=0){
-                window.clearInterval(timerId)
+           timer.innerHTML=timer.innerHTML-1;
+            if(timer.innerHTML<=0){//時間到，做事
+                //清除排程
+                window.clearInterval(timeId);
+                //做事
                 alert("Happy Birthday");
+            }
         }
-    }
-    timerId=window.setInterval(countdown, 1000);
-        
-    </script>
-</body>    
-</html>
+        timeId=window.setInterval(countdown, 1000);//1秒鐘後才會出現
+        /*
+        window.setTimeout(countdown, 1000);//1秒鐘後才會出現
+        let timer=document.querySelector("#timer");
+        function countdown(){
+           timer.innerHTML=timer.innerHTML-1;
+            if(timer.innerHTML>0){
+                window.setTimeout(countdown, 1000);
+            }else{//時間到，做事
+                window.location="http://www.google.com/";
+            }
+        }
+        window.setTimeout(countdown, 1000);//1秒鐘後才會出現
+        */
+        </script>
+    </body>
+    </html>
